@@ -1,9 +1,13 @@
-arquivo_contato = open('dados/contatos.csv', encoding='latin_1')
+try:
+    arquivo_contato = open('dados/contatos.csv', encoding='latin_1')
 
-conteudo = arquivo_contato.readlines()
+    conteudo = arquivo_contato.readlines()
 
-for linha in conteudo:
-    print(linha, end= '')
-
-# for linha in arquivo_contato:
-#     print(linha, end='')
+    for linha in arquivo_contato:
+        print(linha, end='')
+except FileNotFoundError:
+    print('Arquivo não encontrado.')
+except PermissionError:
+    print('Sem permissão de escrita.')
+finally:
+    arquivo_contato.close()
